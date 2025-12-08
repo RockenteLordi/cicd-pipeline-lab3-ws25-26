@@ -12,7 +12,7 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/$_REPO_Lennart/transcoder-app:$COMMIT_SHA'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/$_REPO_LENNART/transcoder-app:$COMMIT_SHA'
       - './flask-app'
 
   # 2. Docker-Image in Google Container Registry pushen
@@ -26,7 +26,7 @@ steps:
     name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/$_REPO_Lennart/transcoder-app:$COMMIT_SHA'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/$_REPO_LENNART/transcoder-app:$COMMIT_SHA'
 
   # 3. Deployment auf Cloud Run
   - id: "Cloud Run Deployment"
@@ -48,7 +48,7 @@ steps:
       - 'deploy'
       - 'transcoder-app'
       - '--image'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/$_REPO_Lennart/transcoder-app:$COMMIT_SHA'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/$_REPO_LENNART/transcoder-app:$COMMIT_SHA'
       - '--region'
       - '$_REGION'
       - '--platform'
@@ -73,7 +73,7 @@ substitutions:
   # Ihre Lösung hier:
   _REGION: 'us-central1'
   _BUCKET_NAME: 'lab3-bucket-lennart'
-  _REPO_Lennart: 'transcoder-repo'
+  _REPO_LENNART: 'transcoder-repo'
 
 # TODO: Setzen Sie ein Timeout von 10 Minuten für den gesamten Build
 timeout: 600s
